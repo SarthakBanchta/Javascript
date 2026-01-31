@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background circles */
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+}
+
+body::before {
+  width: 400px;
+  height: 400px;
+  background: #ff6b6b;
+  top: -100px;
+  left: -100px;
+}
+
+body::after {
+  width: 300px;
+  height: 300px;
+  background: #4ecdc4;
+  bottom: -100px;
+  right: -100px;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(50px, 50px);
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 0.8s ease;
+  z-index: 1;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  text-align: center;
+  opacity: 0.9;
+  animation: fadeInUp 0.8s ease;
+  z-index: 1;
+}
+
+.btn-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s ease;
+  z-index: 1;
+}
+
+.emoji-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  min-width: 120px;
+}
+
+.emoji-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.emoji-btn:active {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.emoji-btn span[role="img"] {
+  font-size: 4rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.emoji-btn:hover span[role="img"] {
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+.count {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.emoji-btn:hover .count {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .btn-container {
+    gap: 20px;
+  }
+
+  .emoji-btn {
+    padding: 20px;
+    min-width: 100px;
+  }
+
+  .emoji-btn span[role="img"] {
+    font-size: 3rem;
+  }
+}
